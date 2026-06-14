@@ -3,11 +3,17 @@ import appData from '../data/app.data.js';
 import type {Request, Response} from 'express';
 import {client} from '../config/client.openai.js';
 
-export const translate = async (req: Request, res: Response) => {
-    // const {userPrompt, targetLanguage} = req.body
+export const translateController = async (req: Request, res: Response) => {
+    const {userPrompt, targetLanguage} = req.body
 
-    const targetLanguage = "French"
-    const userPrompt = "Hi, how's it going? Can you please grab that ball for me?"
+    // const targetLanguage = "French"
+    // const userPrompt = "Hi, how's it going? Can you please grab that ball for me?"
+
+    if (!userPrompt || !targetLanguage) {
+        return (
+            res.status(400).json({error: "userPrompt and targetLanguage are required"})
+        )
+    }
 
     client.messages.push({
         role: "user",
@@ -24,10 +30,12 @@ export const translate = async (req: Request, res: Response) => {
 
         const translation = String(response.choices[0]?.message?.content)
 
-        appData.push({input: userPrompt})
-        appData.push({output: translation})
+        appData.push({
+            input: userPrompt,
+            output: translation
+        })
 
-        console.log(translation) // console logging
+        // console.log(translation) // console logging
         res.status(200).json({message: appData})
 
     } catch (error) {
