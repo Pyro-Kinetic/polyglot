@@ -1,0 +1,34 @@
+.container {
+    max-width: 500px; 
+    margin: 40px auto;
+    font-family: Arial, serif;
+}
+
+#userPrompt {
+    width: 100%;
+    margin-top: 8px;
+}
+
+#targetLanguage {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.input-text {}
+
+.input-language {
+    margin-top: 16px;
+}
+
+.main-button {
+    margin-top: 16px;
+}
+
+.translation-response{
+    margin-top: 24px;
+}
+
+.error-message {
+    margin-top: 24px;
+    color: red;
+}

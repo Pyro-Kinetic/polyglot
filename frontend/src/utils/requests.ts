@@ -1,6 +1,7 @@
 import {env} from "../config/endpoints.js";
 
-type TranslateRequest = {
+// Types
+export type TranslateRequest = {
     userPrompt: string
     targetLanguage: string
 }
@@ -14,6 +15,7 @@ export type TranslateResponse = {
     message: AppDataItem[]
 }
 
+// Functions
 export const translateRequest = async (payload: TranslateRequest): Promise<TranslateResponse> => {
     const response = await fetch(env.TRANSLATE, {
         method: "POST",

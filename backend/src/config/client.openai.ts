@@ -1,4 +1,4 @@
-import {env} from './env.js'
+import {env} from './env.js';
 import {OpenAI} from 'openai';
 import type {ChatCompletionMessageParam} from "openai/resources/chat/completions";
 
