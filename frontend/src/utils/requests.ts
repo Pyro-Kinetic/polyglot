@@ -11,7 +11,7 @@ type AppDataItem = {
     output: string
 }
 
-export type TranslateResponse = {
+type TranslateResponse = {
     message: AppDataItem[]
 }
 

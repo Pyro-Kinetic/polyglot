@@ -32,3 +32,22 @@
     margin-top: 24px;
     color: red;
 }
+
+.user-message {
+    background-color: dodgerblue;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.translation-message {
+    background-color: gray;
+}
+
+.user-message,
+.translation-message {
+    width: fit-content;
+    max-width: 70%;
+    padding: 1rem;
+    border-radius: 15px;
+    color: whitesmoke;
+}
