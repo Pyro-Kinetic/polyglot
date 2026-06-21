@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router"
-import {background, logo} from "../assets"
+import {logo} from "../assets"
 
 function WelcomeScreen() {
     const navigate = useNavigate()
@@ -11,7 +11,6 @@ function WelcomeScreen() {
     return (
         <main className={"welcome-screen"}>
             <section className={"image-text-container"}>
-                <img src={background} alt="Background Image" className={"welcome-background"} aria-hidden="true"/>
                 <div className={"spanish-hello"}>¡Hola!</div>
                 <div className={"english-hello"}>Hello!</div>
                 <img src={logo} alt="Colorful Parrot" className={"logo-image"}/>
