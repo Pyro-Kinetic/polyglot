@@ -1,5 +1,6 @@
 import {type ChangeEvent, useState} from "react";
-import {type TranslateRequest, translateRequest} from "./utils/requests.js";
+import {type TranslateRequest, translateRequest} from "../utils/requests.js";
+import {Link} from "react-router";
 
 type TranslationMessage = {
     id: string
@@ -36,6 +37,7 @@ function App() {
     const handleLanguageChange = (event: ChangeEvent<HTMLSelectElement>) => {
         updateFormData(event)
     }
+
 
     const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -99,7 +101,11 @@ function App() {
 
     return (
         <main className={"container"}>
-            <h1>Polyglot Translator</h1>
+            <h1 className={"heading"}>
+                Hello, let's<br/>
+                break language<br/>
+                barriers!🌍
+            </h1>
 
             {messages.map((message) => (
                 <div key={message.id} className={"message-group"}>
@@ -148,6 +154,8 @@ function App() {
                     <p>{error}</p>
                 </div>
             )}
+
+            <Link to={"/"}>Back to Welcome Screen</Link>
         </main>
     )
 }

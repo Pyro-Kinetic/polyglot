@@ -1,12 +1,76 @@
-.container {
-    max-width: 500px; 
-    margin: 40px auto;
-    font-family: Arial, serif;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+* {
+    font-family: 'Nunito', sans-serif;
 }
 
-#userPrompt {
+body {
+    background-image: url("./assets/background.png");
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #1f1f29;
+}
+
+main {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 24px;
+    text-align: center;
+}
+
+textarea,
+select {
     width: 100%;
+    max-width: 400px;
+    padding: 10px;
     margin-top: 8px;
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #3D6BFF;
+    color: #FEFAF7;
+    font-weight: 500;
+}
+
+.logo-text {
+    font-weight: 600;
+}
+
+.heading {
+    font-weight: 700;
+}
+
+.body-text {
+    font-weight: 400;
+}
+
+.logo-image {
+    width: 20%;
+}
+
+.image-text-container {
+    background-color: #F8F7F4;
+}
+
+.spanish-hello {
+    background-color: #87BCFD;
+}
+
+.english-hello {
+    background-color: #FFD54A;
+}
+
+.chinese-hello {
+    background-color: #8EE7D0;
+}
+
+.french-hello {
+    background-color: #CDBBFF;
 }
 
 #targetLanguage {
