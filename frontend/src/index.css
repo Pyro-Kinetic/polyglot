@@ -1,14 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+:root {
+    --color-primary-blue: #2F67FF;
+    --color-deep-navy: #082B5F;
+    --color-mint-green: #7FE2CB;
+    --color-soft-lavender: #CDB7FF;
+    --color-warm-yellow: #FFD23F;
+    --color-coral-pink: #FF6F7D;
+    --color-cream-bg: #FFFDF8;
+    --color-muted-gray: #6B7280;
+    --color-light-gray-dots: #E5E7EB;
+}
 
 * {
     font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    background-image: url("./assets/background.png");
+    background-color: var(--color-cream-bg);
+    background-image: radial-gradient(circle at top, #ffffff 0%, var(--color-cream-bg) 70%);
     margin: 0;
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
     color: #1f1f29;
 }
 
@@ -55,6 +68,162 @@ button {
 
 .image-text-container {
     background-color: #F8F7F4;
+}
+
+.welcome-screen {
+    width: min(100%, 430px);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 36px 22px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    color: var(--color-deep-navy);
+}
+
+.welcome-screen .image-text-container {
+    width: 100%;
+    max-width: 390px;
+    margin-top: 12px;
+    padding: 24px 8px 10px;
+    border-radius: 32px;
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    justify-items: center;
+    align-items: center;
+    gap: 18px 18px;
+    position: relative;
+}
+
+.welcome-screen .welcome-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(220px, 58vw, 300px);
+    transform: translate(-50%, -44%);
+    opacity: 0.24;
+    z-index: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 12px 24px rgba(8, 43, 95, 0.09));
+}
+
+.welcome-screen .image-text-container > *:not(.welcome-background) {
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-screen .spanish-hello,
+.welcome-screen .english-hello,
+.welcome-screen .chinese-hello,
+.welcome-screen .french-hello {
+    min-width: 140px;
+    padding: 18px 24px;
+    border-radius: 36px;
+    font-size: clamp(1.45rem, 3.9vw, 2rem);
+    font-weight: 800;
+    color: var(--color-deep-navy);
+    line-height: 1;
+    box-shadow: 0 10px 24px rgba(8, 43, 95, 0.12);
+}
+
+.welcome-screen .spanish-hello {
+    background: linear-gradient(140deg, #99c8ff, #6caefb);
+    justify-self: start;
+    transform: rotate(-6deg);
+}
+
+.welcome-screen .english-hello {
+    background: linear-gradient(150deg, #ffdf70, var(--color-warm-yellow));
+    justify-self: end;
+    transform: rotate(-4deg);
+}
+
+.welcome-screen .chinese-hello {
+    background: linear-gradient(145deg, #97ecd8, var(--color-mint-green));
+    justify-self: start;
+}
+
+.welcome-screen .french-hello {
+    background: linear-gradient(145deg, #dbcdfc, var(--color-soft-lavender));
+    justify-self: end;
+    transform: rotate(10deg);
+}
+
+.welcome-screen .logo-image {
+    width: clamp(142px, 34vw, 186px);
+    grid-column: 1 / -1;
+    filter: drop-shadow(0 14px 24px rgba(8, 43, 95, 0.14));
+}
+
+.welcome-screen .logo-text {
+    margin: 8px 0 0;
+    color: var(--color-deep-navy);
+    font-size: clamp(3rem, 10vw, 4.35rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-weight: 900;
+}
+
+.welcome-screen .body-text {
+    margin: 8px 0 22px;
+    color: var(--color-muted-gray);
+    font-size: clamp(1.45rem, 4.8vw, 2.05rem);
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.welcome-screen button {
+    width: 100%;
+    max-width: 365px;
+    margin-top: auto;
+    margin-bottom: 6px;
+    border-radius: 999px;
+    padding: 22px 30px;
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    font-weight: 800;
+    color: #ffffff;
+    background: linear-gradient(120deg, #366efb 0%, var(--color-primary-blue) 45%, #2d60ea 100%);
+    box-shadow: 0 18px 34px rgba(47, 103, 255, 0.28);
+}
+
+.welcome-screen button::after {
+    content: "\2192";
+    float: right;
+    font-size: 1.25em;
+    line-height: 1;
+}
+
+.welcome-screen button:hover {
+    transform: translateY(-1px);
+}
+
+.welcome-screen button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+    .welcome-screen {
+        padding: 24px 16px 22px;
+    }
+
+    .welcome-screen .image-text-container {
+        gap: 14px;
+    }
+
+    .welcome-screen .spanish-hello,
+    .welcome-screen .english-hello,
+    .welcome-screen .chinese-hello,
+    .welcome-screen .french-hello {
+        min-width: 126px;
+        padding: 16px 20px;
+    }
+
+    .welcome-screen button {
+        padding: 20px 28px;
+    }
 }
 
 .spanish-hello {
