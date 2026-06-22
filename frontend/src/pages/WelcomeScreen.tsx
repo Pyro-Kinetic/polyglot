@@ -14,7 +14,7 @@ function WelcomeScreen() {
                 <div className={"spanish-hello"}>¡Hola!</div>
                 <div className={"english-hello"}>Hello!</div>
                 <img src={logo} alt="Colorful Parrot" className={"logo-image"}/>
-                <div className={"chinese-hello"}>你好!</div>
+                <div className={"japanese-hello"}>こんにちは!</div>
                 <div className={"french-hello"}>Bonjour!</div>
             </section>
 

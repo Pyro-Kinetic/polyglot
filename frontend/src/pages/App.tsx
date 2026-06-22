@@ -100,63 +100,71 @@ function App() {
     // console.log(messages)
 
     return (
-        <main className={"container"}>
-            <h1 className={"heading"}>
-                Hello, let's<br/>
-                break language<br/>
-                barriers!🌍
-            </h1>
+        <>
+            <div className={"spanish-hello"}>¡Hola!</div>
+            <div className={"english-hello"}>Hello!</div>
 
-            {messages.map((message) => (
-                <div key={message.id} className={"message-group"}>
-                    <p className={"user-message"}>{message.userPrompt}</p>
-                    <p className={"translation-message"}>{message.translation}</p>
-                </div>
-            ))}
+            <main className={"container"}>
+                <h1 className={"heading"}>
+                    Hello, <br/>
+                    let's break language<br/>
+                    barriers!🌍
+                </h1>
 
-            <form onSubmit={handleSubmit}>
-                <div className={"input-text"}>
-                    <label htmlFor="userPrompt">Text to translate</label>
-                    <br/>
-                    <textarea
-                        id="userPrompt"
-                        name="userPrompt"
-                        value={formData.userPrompt}
-                        onChange={handleTextChange}
-                        rows={6}
-                        placeholder="Enter text here..."
-                    />
-                </div>
+                {messages.map((message) => (
+                    <div key={message.id} className={"message-group"}>
+                        <p className={"user-message"}>{message.userPrompt}</p>
+                        <p className={"translation-message"}>{message.translation}</p>
+                    </div>
+                ))}
 
-                <div className={"input-language"}>
-                    <label htmlFor="targetLanguage">Target language</label>
-                    <br/>
-                    <select
-                        id="targetLanguage"
-                        name="targetLanguage"
-                        value={formData.targetLanguage}
-                        onChange={handleLanguageChange}
-                    >
-                        <option value="English">English</option>
-                        <option value="Spanish">Spanish</option>
-                        <option value="French">French</option>
-                        <option value="Japanese">Japanese</option>
-                    </select>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className={"input-text"}>
+                        <label htmlFor="userPrompt">Text to translate</label>
+                        <br/>
+                        <textarea
+                            id="userPrompt"
+                            name="userPrompt"
+                            value={formData.userPrompt}
+                            onChange={handleTextChange}
+                            rows={6}
+                            placeholder="Enter text here..."
+                        />
+                    </div>
 
-                <button type="submit" className={"main-button"}>
-                    Translate
-                </button>
-            </form>
+                    <div className={"input-language"}>
+                        <label htmlFor="targetLanguage">Target language</label>
+                        <br/>
+                        <select
+                            id="targetLanguage"
+                            name="targetLanguage"
+                            value={formData.targetLanguage}
+                            onChange={handleLanguageChange}
+                        >
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                            <option value="Japanese">Japanese</option>
+                        </select>
+                    </div>
 
-            {error && (
-                <div className={"error-message"}>
-                    <p>{error}</p>
-                </div>
-            )}
+                    <button type="submit" className={"main-button"}>
+                        Translate
+                    </button>
+                </form>
 
-            <Link to={"/"}>Back to Welcome Screen</Link>
-        </main>
+                {error && (
+                    <div className={"error-message"}>
+                        <p>{error}</p>
+                    </div>
+                )}
+
+                <Link to={"/"}>Back to Welcome Screen</Link>
+            </main>
+
+            <div className={"japanese-hello"}>こんにちは!</div>
+            <div className={"french-hello"}>Bonjour!</div>
+        </>
     )
 }
 
