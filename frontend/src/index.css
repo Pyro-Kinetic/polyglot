@@ -75,7 +75,7 @@ button:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 a:focus-visible {
-    outline: 3px solid rgba(47, 103, 255, 0.28);
+    outline: 3px solid var(--soft-lavender);
     outline-offset: 2px;
 }
 
@@ -232,23 +232,58 @@ select:focus {
     gap: 0.6rem;
 }
 
+.scroll-box {
+    width: 100%;
+    height: 250px;
+    padding: 0.8rem 0.9rem;
+    overflow: auto;
+    border: 1px solid var(--border-gray);
+    border-radius: var(--radius-sm);
+    /*background-color: var(--white);*/
+    background: linear-gradient(160deg, rgba(47, 103, 255, 0.06), rgba(127, 226, 203, 0.18));
+    color: var(--deep-navy);
+    box-shadow: var(--shadow-sm);
+    font: inherit;
+    transition: var(--transition);
+}
+
+.home {
+    min-height: 2.75rem;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(155deg, rgba(127, 226, 203, 0.38), rgba(205, 183, 255, 0.3));
+    color: var(--deep-navy);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-gray);
+    box-shadow: var(--shadow-sm);
+}
+
+.home:hover {
+    background: linear-gradient(155deg, rgb(127 226 203 / 0.42), rgb(205 183 255 / 0.37));
+    transform: translateY(-1.5px);
+}
+
 .user-message,
 .translation-message {
-    border-radius: var(--radius-md);
     padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
     border: 1px solid var(--border-gray);
     box-shadow: var(--shadow-sm);
 }
 
 .user-message {
+    margin-top: 0.6rem;
+    margin-left: auto;
+    align-self: end;
     background: var(--light-gray);
     color: var(--deep-navy);
 }
 
 .translation-message {
+    margin-right: auto;
     background: linear-gradient(155deg, rgba(127, 226, 203, 0.38), rgba(205, 183, 255, 0.3));
     color: var(--deep-navy);
     min-height: 2.75rem;
+    align-self: end;
 }
 
 form {

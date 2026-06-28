@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router";
-import {type ChangeEvent, useState} from "react";
+import {type ChangeEvent, useState, useEffect, useRef} from "react";
 import LanguageMotionDiv from "../animate/LanguageMotionDiv.tsx"
 import {type TranslateRequest, translateRequest} from "../utils/requests.js";
 
@@ -23,6 +23,16 @@ function App() {
 
     const [messages, setMessages] = useState<TranslationMessage[]>([])
     const [error, setError] = useState("")
+
+    const scrollBoxRef = useRef<HTMLDivElement | null>(null)
+
+    // useEffects
+    useEffect(() => {
+        scrollBoxRef.current?.scrollTo({
+            top: scrollBoxRef.current.scrollHeight,
+            behavior: "smooth"
+        })
+    }, [messages])
 
     // Functions
     const handleBackToWelcome = () => {
@@ -121,13 +131,14 @@ function App() {
                     barriers!🌍
                 </h1>
 
-                {/*add scrollable div*/}
-                {messages.map((message) => (
-                    <div key={message.id} className={"message-group"}>
-                        <p className={"user-message"}>{message.userPrompt}</p>
-                        <p className={"translation-message"}>{message.translation}</p>
-                    </div>
-                ))}
+                <div ref={scrollBoxRef} className={"scroll-box"}>
+                    {messages.map((message) => (
+                        <div key={message.id} className={"message-group"}>
+                            <p className={"user-message"}>{message.userPrompt}</p>
+                            <p className={"translation-message"}>{message.translation}</p>
+                        </div>
+                    ))}
+                </div>
 
                 <form onSubmit={handleSubmit}>
                     <div className={"input-text"}>
@@ -145,7 +156,7 @@ function App() {
 
                     <div className={"input-language"}>
                         <label htmlFor="targetLanguage">Target language</label>
-                        <br/>
+
                         <select
                             id="targetLanguage"
                             name="targetLanguage"
@@ -170,7 +181,7 @@ function App() {
                     </div>
                 )}
 
-                <button className={"user-message"} onClick={handleBackToWelcome}>Home</button>
+                <button className={"home"} onClick={handleBackToWelcome}>Home</button>
             </main>
 
             <LanguageMotionDiv>
