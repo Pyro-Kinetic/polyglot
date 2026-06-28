@@ -1,5 +1,6 @@
-import {useNavigate} from "react-router"
 import {logo} from "../assets"
+import {useNavigate} from "react-router"
+import LanguageMotionDiv from "../animate/LanguageMotionDiv.tsx"
 
 function WelcomeScreen() {
     const navigate = useNavigate()
@@ -11,11 +12,19 @@ function WelcomeScreen() {
     return (
         <main className={"welcome-screen"}>
             <section className={"image-text-container"}>
-                <div className={"spanish-hello"}>¡Hola!</div>
-                <div className={"english-hello"}>Hello!</div>
+                <LanguageMotionDiv>
+                    <div className={"spanish-hello hello"}>¡Hola!</div>
+                </LanguageMotionDiv>
+                <LanguageMotionDiv>
+                    <div className={"english-hello hello"}>Hello!</div>
+                </LanguageMotionDiv>
                 <img src={logo} alt="Colorful Parrot" className={"logo-image"}/>
-                <div className={"japanese-hello"}>こんにちは!</div>
-                <div className={"french-hello"}>Bonjour!</div>
+                <LanguageMotionDiv>
+                    <div className={"japanese-hello hello"}>こんにちは!</div>
+                </LanguageMotionDiv>
+                <LanguageMotionDiv>
+                    <div className={"french-hello hello"}>Bonjour!</div>
+                </LanguageMotionDiv>
             </section>
 
             <h1 className={"logo-text"}>Polyglot</h1>

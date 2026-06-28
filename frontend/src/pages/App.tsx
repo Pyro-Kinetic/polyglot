@@ -1,6 +1,8 @@
+import {useNavigate} from "react-router";
 import {type ChangeEvent, useState} from "react";
+import LanguageMotionDiv from "../animate/LanguageMotionDiv.tsx"
 import {type TranslateRequest, translateRequest} from "../utils/requests.js";
-import {Link} from "react-router";
+
 
 type TranslationMessage = {
     id: string
@@ -11,6 +13,8 @@ type TranslationMessage = {
 }
 
 function App() {
+    const navigate = useNavigate()
+
     // States
     const [formData, setFormData] = useState<TranslateRequest>({
         userPrompt: "",
@@ -21,6 +25,10 @@ function App() {
     const [error, setError] = useState("")
 
     // Functions
+    const handleBackToWelcome = () => {
+        navigate("/")
+    }
+
     const updateFormData = (event: ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>) => {
         const {name, value} = event.target
 
@@ -97,12 +105,14 @@ function App() {
 
     }
 
-    // console.log(messages)
-
     return (
         <>
-            <div className={"spanish-hello"}>¡Hola!</div>
-            <div className={"english-hello"}>Hello!</div>
+            <LanguageMotionDiv>
+                <div className={"spanish-hello hello"}>¡Hola!</div>
+            </LanguageMotionDiv>
+            <LanguageMotionDiv>
+                <div className={"english-hello hello"}>Hello!</div>
+            </LanguageMotionDiv>
 
             <main className={"container"}>
                 <h1 className={"heading"}>
@@ -111,6 +121,7 @@ function App() {
                     barriers!🌍
                 </h1>
 
+                {/*add scrollable div*/}
                 {messages.map((message) => (
                     <div key={message.id} className={"message-group"}>
                         <p className={"user-message"}>{message.userPrompt}</p>
@@ -159,11 +170,15 @@ function App() {
                     </div>
                 )}
 
-                <Link to={"/"}>Back to Welcome Screen</Link>
+                <button className={"user-message"} onClick={handleBackToWelcome}>Home</button>
             </main>
 
-            <div className={"japanese-hello"}>こんにちは!</div>
-            <div className={"french-hello"}>Bonjour!</div>
+            <LanguageMotionDiv>
+                <div className={"japanese-hello hello"}>こんにちは!</div>
+            </LanguageMotionDiv>
+            <LanguageMotionDiv>
+                <div className={"french-hello hello"}>Bonjour!</div>
+            </LanguageMotionDiv>
         </>
     )
 }
