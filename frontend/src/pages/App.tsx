@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router";
-import {type ChangeEvent, useState, useEffect, useRef} from "react";
+import {type ChangeEvent, type KeyboardEvent, useEffect, useRef, useState} from "react";
 import LanguageMotionDiv from "../animate/LanguageMotionDiv.tsx"
 import {type TranslateRequest, translateRequest} from "../utils/requests.js";
 
@@ -56,6 +56,12 @@ function App() {
         updateFormData(event)
     }
 
+    const handleSubmitOnKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault()
+            event.currentTarget.form?.requestSubmit()
+        }
+    }
 
     const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -67,6 +73,11 @@ function App() {
             setError("Please enter text to translate.")
             return
         }
+
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            userPrompt: ""
+        }))
 
         const messageId = crypto.randomUUID()
 
@@ -82,10 +93,10 @@ function App() {
 
         try {
             const data = await translateRequest(formData)
-            console.log(data.message, "\n")
+            // console.log(data.message, "\n")
 
             const latestTranslation = data.message[data.message.length - 1].output
-            console.log(latestTranslation)
+            // console.log(latestTranslation)
 
             setMessages(prevMessages => (
                 prevMessages.map(message => (
@@ -149,6 +160,7 @@ function App() {
                             name="userPrompt"
                             value={formData.userPrompt}
                             onChange={handleTextChange}
+                            onKeyDown={handleSubmitOnKeyDown}
                             rows={6}
                             placeholder="Enter text here..."
                         />

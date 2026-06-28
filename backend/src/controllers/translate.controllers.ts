@@ -12,10 +12,9 @@ export const translateController = async (req: Request, res: Response) => {
         // const userPrompt = "Hi, how's it going? Can you please grab that ball for me?"
 
         if (!userPrompt || !targetLanguage) return (res.status(400).json({error: "userPrompt and targetLanguage are required"}))
-
-        // Gets translation from OpenAI | Returns it to the frontend
         if (client.messages.length > 1) client.messages.pop()
 
+        // Gets translation from OpenAI | Returns it to the frontend
         client.messages.push({
             role: "user",
             content: `Please translate the following words to ${targetLanguage}. Words: ${userPrompt}`

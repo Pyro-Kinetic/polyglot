@@ -25,8 +25,9 @@ app.use(cors({
 
 app.use(express.json());
 
+// Sanity check
 app.get('/', (req, res) => {
-    res.json({message: "My API is working"})
+    res.status(200).json({message: "My API is working"})
 })
 
 app.use('/translate', translateRoute)

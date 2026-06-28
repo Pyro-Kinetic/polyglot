@@ -7,7 +7,7 @@ function LanguageMotionDiv({children}: { children: ReactNode }) {
             drag
             dragDirectionLock
             dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
-            dragTransition={{bounceStiffness: 500, bounceDamping: 15}}
+            dragTransition={{bounceStiffness: 1000, bounceDamping: 15}}
             dragElastic={0.2}
             whileDrag={{cursor: "grabbing"}}
             className={"motion-parent"}
