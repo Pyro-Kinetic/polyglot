@@ -31,7 +31,7 @@ const sanitize = (value: unknown): unknown => {
         return sanitizedObj
     }
 
-    return value
+    return false
 }
 
 export const sanitizeMiddleware = (
@@ -42,15 +42,25 @@ export const sanitizeMiddleware = (
     try {
         if (!req.body) return (res.status(400).json({error: "userPrompt and targetLanguage are required"}))
 
-        req.body = sanitize(req.body)
+        const {userPrompt, targetLanguage} = req.body
 
-        // console.log("checked")
+        if ((userPrompt.length > 150) || (targetLanguage.length > 35))
+            return (res.status(400).json({error: "Psst... Your message is too long"}))
+
+        if (!sanitize(userPrompt) || !sanitize(targetLanguage))
+            return (res.status(400).json({
+                error: "You have violated our code of conduct. Hacking your system..."
+            }))
+
+        req.body = {
+            userPrompt: sanitize(userPrompt),
+            targetLanguage: sanitize(targetLanguage)
+        }
+
         next();
 
     } catch (error) {
         console.error(error)
-        return (res.status(422).json({error: "The cat ate your data"}))
+        return (res.status(422).json({error: "Validation failed. The cat ate your data."}))
     }
 }
-
-
