@@ -1,4 +1,4 @@
-import {env} from "../config/endpoints.js";
+import {env} from "../config/endpoints.config.ts";
 
 // Types
 export type TranslateRequest = {

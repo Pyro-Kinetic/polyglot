@@ -1,10 +1,6 @@
-export const isProduction = import.meta.env.PROD;
+import {isProduction, setBaseUrl} from "./deploy.config.js"
 
-export const setBaseUrl = () => {
-    return isProduction ? "/" : import.meta.env.BASE_URL
-}
-
-const BASE_URL = setBaseUrl()
+const BASE_URL = isProduction ? setBaseUrl("render") : setBaseUrl("github")
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const TRANSLATE = `${API_BASE_URL}/translate`
