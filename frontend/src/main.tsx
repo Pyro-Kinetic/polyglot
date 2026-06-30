@@ -2,6 +2,7 @@ import './index.css';
 import type {ReactNode} from "react";
 import {StrictMode} from "react";
 import App from './pages/App.tsx';
+import {env} from "./config/endpoints.js";
 import {createRoot} from "react-dom/client";
 import {AnimatePresence, motion} from "motion/react";
 import WelcomeScreen from "./pages/WelcomeScreen.tsx";
@@ -39,7 +40,7 @@ function AnimatedRoutes() {
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename={env.BASE_URL}>
             <AnimatedRoutes/>
         </BrowserRouter>
     </StrictMode>,

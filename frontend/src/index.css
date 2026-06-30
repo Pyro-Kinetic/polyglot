@@ -2,6 +2,7 @@
 
 :root {
     --primary-blue: #2F67FF;
+    --light-blue: #86BBFD;
     --deep-navy: #082B5F;
     --mint-green: #7FE2CB;
     --soft-lavender: #CDB7FF;
@@ -35,8 +36,13 @@ body,
 body {
     font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     color: var(--deep-navy);
-    background: radial-gradient(circle at 12% 6%, rgba(205, 183, 255, 0.38) 0%, rgba(205, 183, 255, 0) 40%),
-    radial-gradient(circle at 88% 14%, rgba(127, 226, 203, 0.34) 0%, rgba(127, 226, 203, 0) 40%),
+    background: radial-gradient(
+            circle at 12% 6%,
+            rgba(205, 183, 255, 0.38) 0%,
+            rgba(205, 183, 255, 0) 40%),
+    radial-gradient(circle at 88% 14%,
+            rgba(127, 226, 203, 0.34) 0%,
+            rgba(127, 226, 203, 0) 40%),
     var(--cream-bg);
     line-height: 1.5;
     padding: 16px;
@@ -147,7 +153,7 @@ select:focus {
     cursor: pointer;
     filter: drop-shadow(0 6px 14px rgba(8, 43, 95, 0.16));
 
-    user-select: none;
+    -webkit-user-select: none;
     -webkit-user-drag: none;
 }
 
@@ -169,25 +175,29 @@ select:focus {
 .spanish-hello {
     top: 12%;
     left: 30%;
-    color: var(--coral-pink);
+    color: var(--deep-navy);
+    background-color: var(--warm-yellow);
 }
 
 .english-hello {
     top: 14%;
     right: 30%;
-    color: var(--primary-blue);
+    color: var(--deep-navy);
+    background-color: var(--coral-pink);
 }
 
 .japanese-hello {
     bottom: 12%;
     left: 32%;
     color: var(--deep-navy);
+    background-color: var(--soft-lavender);
 }
 
 .french-hello {
     bottom: 11%;
     right: 32%;
-    color: #6c53b8;
+    color: var(--deep-navy);
+    background-color: var(--mint-green);
 }
 
 .logo-text {
