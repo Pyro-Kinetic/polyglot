@@ -110,7 +110,8 @@ function App() {
 
         } catch (error) {
             const errorMessage = (error instanceof Error) ? error.message : "An unknown error occurred."
-            setError(errorMessage)
+            // setError(errorMessage)
+            setError(`The cat tripped over the power cord. Our servers can no longer speak. Help!`)
 
             setMessages(prevMessages => (
                 prevMessages.map(message => (

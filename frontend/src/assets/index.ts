@@ -3,5 +3,5 @@ import logo from "./logo.png"
 
 export {
     background,
-    logo
+    logo,
 }

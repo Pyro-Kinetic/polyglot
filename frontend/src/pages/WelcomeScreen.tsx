@@ -19,7 +19,7 @@ function WelcomeScreen() {
                     <div className={"english-hello hello"}>Hello!</div>
                 </LanguageMotionDiv>
                 <LanguageMotionDiv>
-                        <img src={logo} alt="Colorful Parrot" className={"logo-image"}/>
+                    <img src={logo} alt="Colorful Parrot" className={"logo-image"}/>
                 </LanguageMotionDiv>
                 <LanguageMotionDiv>
                     <div className={"japanese-hello hello"}>こんにちは!</div>
