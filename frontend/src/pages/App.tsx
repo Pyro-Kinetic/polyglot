@@ -22,7 +22,7 @@ function App() {
     })
 
     const [messages, setMessages] = useState<TranslationMessage[]>([])
-    const [error, setError] = useState("")
+    const [error, setError] = useState<string>("")
 
     const scrollBoxRef = useRef<HTMLDivElement | null>(null)
 
@@ -54,6 +54,23 @@ function App() {
 
     const handleLanguageChange = (event: ChangeEvent<HTMLSelectElement>) => {
         updateFormData(event)
+    }
+
+    const formatMessages = (message: TranslationMessage) => {
+        return (
+            message.error ?
+                <div key={message.id} className={"message-group"}>
+                    <p className={`user-message`}
+                       style={{border: "1px solid rgba(255, 111, 125, 0.35)", background: "rgba(255, 111, 125, 0.12)"}}>
+                        <span style={{color: "#9b2130"}}>Failed to translate</span>
+                    </p>
+                    {/*<p className={`translation-message`}>{message.translation}</p>*/}
+                </div> :
+                <div key={message.id} className={"message-group"}>
+                    <p className={"user-message"}>{message.userPrompt}</p>
+                    <p className={`translation-message`}>{message.translation}</p>
+                </div>
+        )
     }
 
     const handleSubmitOnKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -110,8 +127,7 @@ function App() {
 
         } catch (error) {
             const errorMessage = (error instanceof Error) ? error.message : "An unknown error occurred."
-            // setError(errorMessage)
-            setError(`The cat tripped over the power cord. Our servers can no longer speak. Help!`)
+            setError(errorMessage)
 
             setMessages(prevMessages => (
                 prevMessages.map(message => (
@@ -144,12 +160,7 @@ function App() {
                 </h1>
 
                 <div ref={scrollBoxRef} className={"scroll-box"}>
-                    {messages.map((message) => (
-                        <div key={message.id} className={"message-group"}>
-                            <p className={"user-message"}>{message.userPrompt}</p>
-                            <p className={"translation-message"}>{message.translation}</p>
-                        </div>
-                    ))}
+                    {messages.map((message) => (formatMessages(message)))}
                 </div>
 
                 <form onSubmit={handleSubmit}>

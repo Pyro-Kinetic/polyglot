@@ -148,7 +148,7 @@ select:focus {
 }
 
 .logo-image {
-    width: clamp(21px, 11vw, 85px);
+    width: clamp(21px, 15vw, 85px);
     height: auto;
     margin: 5rem;
     cursor: pointer;
@@ -295,6 +295,7 @@ select:focus {
 
 .translation-message {
     margin-right: auto;
+    /*margin-top: 0.6rem;*/
     background: linear-gradient(155deg, rgba(127, 226, 203, 0.38), rgba(205, 183, 255, 0.3));
     color: var(--deep-navy);
     min-height: 2.75rem;
