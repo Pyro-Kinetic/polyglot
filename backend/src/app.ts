@@ -26,7 +26,7 @@ app.use(cors({
 app.use(express.json());
 
 // Sanity check
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
     res.status(200).json({message: "My API is working"})
 })
 
